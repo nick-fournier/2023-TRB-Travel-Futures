@@ -161,8 +161,10 @@
 \regtotcounter{figure} 	%count figures
 
 \newcommand{\quickwordcount}[1]{%
-	\immediate\write18{texcount -1 -sum -merge #1.tex > #1-words}%
-	\immediate\openin\somefile=#1-words%
+% 	\immediate\write18{texcount -1 -sum -merge #1.tex > #1-words}%
+% 	\immediate\openin\somefile=#1-words%
+    \immediate\write18{texcount -1 -sum -q main.tex > count.txt}% %main.tex must match!!!
+    \immediate\openin\somefile=count.txt%
 	\read\somefile to \@@localdummy%
 	\immediate\closein\somefile%
 	\setcounter{wordcounter}{\@@localdummy}%
