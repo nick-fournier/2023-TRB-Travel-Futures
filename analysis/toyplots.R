@@ -37,7 +37,7 @@ plot[['softcost']] <- ggplot(data.frame(x = c(-10, 10)), aes(x = x)) +
                      limits = c(-1, 1),
                      breaks = c(-1, 0, 1),
                      labels = c('Early', 'On time', 'Late')) +
-  scale_y_continuous("Discount Achieved", limits = c(0, 1),
+  scale_y_continuous("Portion of Discount Achieved", limits = c(0, 1),
                      labels = scales::percent_format(accuracy=1)) +
   theme_classic() 
 # plot[['softcost']]
