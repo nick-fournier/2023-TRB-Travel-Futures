@@ -7,7 +7,6 @@
 % When numbered option is activated, lines are numbered.
 \documentclass[numbered]{trbunofficial}
 \usepackage{graphicx}
-\usepackage{soul}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{xfrac}
@@ -62,7 +61,7 @@
 \section{Abstract}
 While transportation funding can be collected in a variety of direct (e.g., fares, tolls, and gas taxes) or indirect ways (e.g., property and sales tax), dynamic demand responsive pricing not only collects revenue but incentivizes travelers to avoid peak-demand periods, thus utilizing infrastructure capacity more efficiently. Unfortunately, the demand response to price changes, called price elasticity of demand, is generally greater for longer-term travel planning (e.g., air and rail travel) than for more atomized short-term planning (e.g., highway tolls and transit fares). While this is due to a plethora of factors (e.g., time flexibility, housing choice, automobile investment, etc.), a critical factor is that travelers simply lack sufficient information for future travel planning. For example, airline prices at different times can be easily compared, but a highway driver cannot accurately predict congestion nor congestion pricing, thus causing price changes to have little effect on demand. This leaves any congestion abatement up to inefficient trial and error, and anecdotal speculation by travelers. Moreover, dynamic pricing is politically unsavory due to price uncertainty and collateral equity concerns. This article seeks to help remedy these concerns by proposing a simple ``futures'' market mechanism that can augment existing fare/toll collection technologies, providing travelers with sufficient pricing information and purchasing options to travel plan and avoid excessive prices. Users can optionally pre-pay their future fares/tolls to lock in a lower price for expected trips, thus encouraging good travel planning and efficient infrastructure utilization, while reducing price uncertainty.
 \hfill\break%
-\noindent\textit{Keywords}: \hl{congestion pricing, dynamic pricing, demand elasticity, futures market}
+\noindent\textit{Keywords}: congestion pricing, dynamic pricing, demand elasticity, futures market
 \newpage
 
 
@@ -214,13 +213,7 @@ The pricing function itself could be a simple linear or monotonically increasing
 
 % A potentially useful feature of using a bounded sigmoid is that it can be presented to the public as a discount feature for booked and off-peak travelers, not a surcharge. For example, off-peak trips are discounted from the typical fixed toll price. This may help make dynamic pricing more politically palatable. Of course, the upper boundary will need to be set high enough to collect sufficient net revenue.
 
-The sigmoid function provides the purchase price, but this price can also vary depending on the actual arrival time of drivers. If drivers fail to meet their booked time window, it would be unfair to other punctual drivers to still provide the discount. However, there is still the potential safety concern of arrival time anxiety associated with strict time windows. Fortunately, the smoothing kernel function used for continuous density estimation can serve a dual purpose in this case. The kernel function can be used to provide a ``soft'' arrival window where users get diminishing discount the further from their booked arrival time. For example, if we assume that the actual arrival time of drivers for a particular time increment has a Gaussian (normal) distribution, then the discount price can vary as a function of the time
-
-
-actual arrival time from the booked arrival time. 
-
-it is possible to estimate a Gaussian kernel fitted to drivers arrival behavior. 
-
+The sigmoid function provides the purchase price, but this price can also vary depending on the actual arrival time of drivers. If drivers fail to meet their booked time window, it would be unfair to other punctual drivers to still provide the discount. However, there is still the potential safety concern of arrival time anxiety associated with strict time windows. Fortunately, the smoothing kernel function used for continuous density estimation can serve a dual purpose in this case. The kernel function can be used to provide a ``soft'' arrival window where users get diminishing discount the further from their booked arrival time. For example, if we assume that the actual arrival time of drivers for a particular time increment has a Gaussian (normal) distribution, then the discount price can vary as a function punctuality (i.e., the actual arrival time minus booked arrival time), as shown in Figure~\ref{fig:softcost}.
 
 \begin{figure}[H]
     \centering
@@ -228,7 +221,7 @@ it is possible to estimate a Gaussian kernel fitted to drivers arrival behavior.
     plot[["softcost"]]
     @
 	\caption{Smooth price window function}
-	\label{fig:kernal}
+	\label{fig:softcost}
 \end{figure}
 
 %-----------------------------------------------------------------------------------------
@@ -386,7 +379,7 @@ Suppose that the regional metropolitan transportation planning commission wishes
  	\label{tab:toyprice}
  \end{table}
 
-Calibration parameter values of \Sexpr{round(a,2)} and \Sexpr{round(b,2)} are set for $\alpha$ and $\beta$, respectively, which provides a smooth S-shaped sigmoid function with the upper and lower limits approximately located near traffic densities of 0 and \Sexpr{round(k_c)} $\sfrac{veh}{km}$, as shown in Figure~\ref{fig:toyprice}. \hl{A pricing function in this case should align the upper price limit to incentivize demand to result in densities below the maximum desired values.}
+Calibration parameter values of \Sexpr{round(a,2)} and \Sexpr{round(b,2)} are set for $\alpha$ and $\beta$, respectively, which provides a smooth S-shaped sigmoid function with the upper and lower limits approximately located near traffic densities of 0 and \Sexpr{round(k_c)} $\sfrac{veh}{km}$, as shown in Figure~\ref{fig:toyprice}. A pricing function in this case should align the upper price limit to incentivize demand to result in densities below the maximum desired values.
 
  \begin{figure}[H]
  	\centering
@@ -525,8 +518,6 @@ In practice, simple price elasticity of demand may be too crude for day-to-day o
 
 \section{Acknowledgments}
 This study was made possible through funding received by the University of California Institute of Transportation Studies from the State of California through the Public Transportation Account and the Road Repair and Accountability Act of 2017 (Senate Bill 1). The contents of this report reflect the views of the author(s), who is/are responsible for the facts and the accuracy of the information presented. This document is disseminated under the sponsorship of the State of California in the interest of information exchange and does not necessarily reflect the official views or policies of the State of California.
-
-\hl{The authors would like to thank...}
 
 \newpage
 
