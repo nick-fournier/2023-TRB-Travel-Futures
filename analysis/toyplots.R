@@ -31,9 +31,7 @@ for(x in rand$rand) plot[['kernel']] <- plot[['kernel']] + stat_function(fun = d
 
 
 #### Soft Cost Window
-
 ggplot(data.frame(x = c(-10, 10)), aes(x = x)) +
-  # stat_function(fun = function(x) dnorm(x, mean = 0, sd = 1, log = FALSE)) +
   stat_function(fun = function(x) dnorm(x, sd=0.3)/dnorm(0, sd=0.3)) +
   scale_x_continuous("Actual vs Booked arrival time", 
                      limits = c(-1, 1),
