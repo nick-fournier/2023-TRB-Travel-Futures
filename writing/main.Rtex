@@ -224,10 +224,11 @@ it is possible to estimate a Gaussian kernel fitted to drivers arrival behavior.
 
 \begin{figure}[H]
     \centering
-	<<kernel, echo=FALSE, cache=TRUE, fig.width=4, fig.asp = 0.5, out.width="0.5\\textwidth", warning=FALSE>>=
+	<<softcost, echo=FALSE, cache=TRUE, fig.width=4, fig.asp = 0.5, out.width="0.5\\textwidth", warning=FALSE>>=
     plot[["softcost"]]
-    \caption{Smooth price window function}
-	\label{fig:softcost}
+    @
+	\caption{Smooth price window function}
+	\label{fig:kernal}
 \end{figure}
 
 %-----------------------------------------------------------------------------------------
